@@ -5,8 +5,6 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.navigation.findNavController
 import sheridan.gonzale5.assignment2.R
 import sheridan.gonzale5.assignment2.database.GameScore
 import sheridan.gonzale5.assignment2.databinding.FragmentHistoryItemBinding

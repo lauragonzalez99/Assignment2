@@ -1,6 +1,5 @@
 package sheridan.gonzale5.assignment2.ui.history
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -16,10 +15,6 @@ import sheridan.gonzale5.assignment2.databinding.FragmentHistoryBinding
  * A fragment representing a list of Items.
  */
 class HistoryFragment : Fragment() {
-
-    companion object{
-        const val CONFIRM_CLEAR: Int = 2
-    }
 
     private lateinit var binding: FragmentHistoryBinding
 
