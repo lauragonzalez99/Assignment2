@@ -1,15 +1,18 @@
 package sheridan.gonzale5.assignment2.ui.roller
 
+import android.app.Activity
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import sheridan.gonzale5.assignment2.R
+//import sheridan.gonzale5.assignment2.databinding
 
 class RollerFragment : Fragment() {
-
-
 
     private lateinit var viewModel: RollerViewModel
 

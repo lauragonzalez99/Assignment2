@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Assignment 2</string>
+    <string name="app_name">Assignment2</string>
 
     <!-- Menu Items -->
     <string name="action_settings">Settings</string>
@@ -10,6 +10,10 @@
     <string name="roller_fragment_label">Roller</string>
     <string name="history_fragment_label">History</string>
     <string name="total">Total:</string>
+
+    <string name="roll_label">Roll</string>
+    <string name="dash">_</string>
+    <string name="sum_0">Sum: 0</string>
 
 
 </resources>
