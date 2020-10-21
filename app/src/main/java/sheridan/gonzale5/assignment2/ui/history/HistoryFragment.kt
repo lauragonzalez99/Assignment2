@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import sheridan.gonzale5.assignment2.R
 import sheridan.gonzale5.assignment2.ui.history.dummy.DummyContent
+//import sheridan.gonzale5.assignment2.databinding
 
 /**
  * A fragment representing a list of Items.

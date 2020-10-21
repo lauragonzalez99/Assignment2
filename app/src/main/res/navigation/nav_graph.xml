@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/rollerFragment">
+    app:startDestination="@id/roller_fragment">
     <fragment
-        android:id="@+id/rollerFragment"
+        android:id="@+id/roller_fragment"
         android:name="sheridan.gonzale5.assignment2.ui.roller.RollerFragment"
         android:label="@string/roller_fragment_label"
         tools:layout="@layout/fragment_roller" />
