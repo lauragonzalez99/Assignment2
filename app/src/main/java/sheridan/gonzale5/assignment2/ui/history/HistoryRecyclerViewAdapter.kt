@@ -1,42 +1,50 @@
 package sheridan.gonzale5.assignment2.ui.history
 
+import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.findNavController
 import sheridan.gonzale5.assignment2.R
+import sheridan.gonzale5.assignment2.database.GameScore
+import sheridan.gonzale5.assignment2.databinding.FragmentHistoryItemBinding
 
-import sheridan.gonzale5.assignment2.ui.history.dummy.DummyContent.DummyItem
+class HistoryRecyclerViewAdapter(private val context: Context) : RecyclerView.Adapter<HistoryRecyclerViewAdapter.ViewHolder>() {
 
-/**
- * [RecyclerView.Adapter] that can display a [DummyItem].
- * TODO: Replace the implementation with code for your data type.
- */
-class HistoryRecyclerViewAdapter(
-    private val values: List<DummyItem>
-) : RecyclerView.Adapter<HistoryRecyclerViewAdapter.ViewHolder>() {
+    var history: List<GameScore>? = null
+        set(value){
+            field = value
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.fragment_history_item, parent, false)
-        return ViewHolder(view)
+        return ViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = values[position]
-        holder.idView.text = item.id
-        holder.contentView.text = item.content
+        holder.bind(position + 1, history!![position])
     }
 
-    override fun getItemCount(): Int = values.size
+    override fun getItemCount(): Int = history?.size ?: 0
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val idView: TextView = view.findViewById(R.id.item_number)
-        val contentView: TextView = view.findViewById(R.id.content)
+    class ViewHolder private constructor(
+            private val binding: FragmentHistoryItemBinding) : RecyclerView.ViewHolder(binding.root){
 
-        override fun toString(): String {
-            return super.toString() + " '" + contentView.text + "'"
+        fun bind(count: Int, gameScore: GameScore) {
+            binding.count.text = binding.root.context.getString(R.string.count, count)
+            binding.gameScore = gameScore
+            binding.executePendingBindings()
+        }
+
+        companion object {
+            fun from(parent: ViewGroup): ViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = FragmentHistoryItemBinding.inflate(layoutInflater, parent, false)
+                return ViewHolder(binding)
+            }
         }
     }
+
 }

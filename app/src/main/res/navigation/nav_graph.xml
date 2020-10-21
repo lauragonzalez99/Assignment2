@@ -10,11 +10,12 @@
         android:label="@string/roller_fragment_label"
         tools:layout="@layout/fragment_roller" />
     <fragment
-        android:id="@+id/historyFragment"
+        android:id="@+id/history_fragment"
         android:name="sheridan.gonzale5.assignment2.ui.history.HistoryFragment"
         android:label="@string/history_fragment_label"
         tools:layout="@layout/fragment_history" />
     <action
         android:id="@+id/action_global_to_history"
-        app:destination="@id/historyFragment" />
+        app:destination="@id/history_fragment"
+        app:popUpToInclusive="true" />
 </navigation>

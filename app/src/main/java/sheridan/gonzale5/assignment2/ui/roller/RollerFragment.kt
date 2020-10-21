@@ -2,7 +2,6 @@ package sheridan.gonzale5.assignment2.ui.roller
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -15,7 +14,9 @@ class RollerFragment : Fragment() {
 
     private lateinit var binding: FragmentRollerBinding
     private val viewModel: RollerViewModel by viewModels()
-    private val die = Die()
+    private val dieOne = Die()
+    private val dieTwo = Die()
+    private val dieThree = Die()
     private var total: Int = 0
 
     override fun onCreateView(
@@ -25,34 +26,32 @@ class RollerFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentRollerBinding.inflate(inflater, container, false)
 
-        binding.rollButton.setOnClickListener { save() }
-
-        // show output when the data is saved in the database
-
-        viewModel.state.observe(viewLifecycleOwner){
-            if(it.status == RollerViewModel.Status.SAVED_DATA) showOutput(it.gameScoreId!!)
-        }
+        binding.rollButton.setOnClickListener { rollDice() }
 
         return binding.root
     }
 
-    private fun save(){
-        // get die one value
-        val die_one = Integer.parseInt(binding.dieOne.text.toString())
-        // get die two value
-        val die_two = Integer.parseInt(binding.dieTwo.text.toString())
-        // get die three value
-        val die_three = Integer.parseInt(binding.dieThree.text.toString())
-
-        total = die_one + die_two + die_three
-
-        viewModel.save(GameScore(0, die_one, die_two, die_three, total))
+    private fun rollDice() {
+        dieOne.roll()
+        dieTwo.roll()
+        dieThree.roll()
+        displayDice()
     }
 
-    private fun showOutput(gameScoreId: Long) {
+    private fun displayDice() {
+        binding.dieOne.text = dieOne.value.toString()
+        binding.dieTwo.text = dieTwo.value.toString()
+        binding.dieThree.text = dieThree.value.toString()
 
-        viewModel.reset() // prevents going more than once
+        total =  dieOne.value + dieTwo.value + dieThree.value
 
+        binding.resultText.text = getString(R.string.sum_number, total)
+
+        save()
+    }
+
+    private fun save(){
+        viewModel.save(GameScore(0, dieOne.value, dieTwo.value, dieThree.value, total))
     }
 
 
@@ -77,16 +76,5 @@ class RollerFragment : Fragment() {
         }
     }
 
-    private fun rollDice() {
-        die.roll()
-        displayDice()
-    }
-
-    private fun displayDice() {
-        binding.resultText.text =
-            if (die.value > 0)
-                die.value.toString()
-            else " "
-    }
 
 }
