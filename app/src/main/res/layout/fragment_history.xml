@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             tools:ignore="RtlHardcoded"
-            android:text="History Total"
+            android:text="@string/history_total_place_holder"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
     </LinearLayout>

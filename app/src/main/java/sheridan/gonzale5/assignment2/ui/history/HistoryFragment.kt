@@ -54,9 +54,14 @@ class HistoryFragment : Fragment() {
 
     private fun refreshHistory(list: List<GameScore>?) {
         adapter.history = list
-        val count = list?.size ?: 0
-        binding.historyTotal.text =
-                resources.getQuantityString(R.plurals.history_total, count, count)
+        var historyTotal = 0
+        if (list != null) {
+            for (score in list) {
+                historyTotal += score.total
+            }
+        }
+        binding.historyTotal.text = resources.getString(R.string.history_total, historyTotal)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

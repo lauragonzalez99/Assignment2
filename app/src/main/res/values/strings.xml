@@ -17,17 +17,13 @@
 
     <!-- the history fragment -->
     <string name="count">%1$d.</string>
-    <plurals name="history_total">
-        <item quantity="one">History Total: %1$d message</item>
-        <item quantity="other">History Total: %1$d messages</item>
-    </plurals>
+    <string name="history_total_format">%1$d + %2$d + %3$d = %4$d </string>
+    <string name="history_total_place_holder">History Total</string>
+    <string name="history_total">History Total: %1$d</string>
 
     <!-- confirmation dialog -->
     <string name="confirm_delete_message">Do you want to remove this message?</string>
     <string name="confirm_clear_message">Do you want to clear the history?</string>
-
-
-    <string name="history_total_format">%1$d + %2$d + %3$d = %4$d </string>
 
 
 </resources>

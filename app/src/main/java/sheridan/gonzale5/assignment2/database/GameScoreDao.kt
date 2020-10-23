@@ -12,11 +12,9 @@ interface GameScoreDao {
     @Insert
     suspend fun insert(gamescore: GameScore): Long
 
-    //getall
     @Query("SELECT * FROM game_score ORDER BY id")
     fun getAll() : LiveData<List<GameScore>>
 
-    //deleteall
     @Query("DELETE FROM game_score")
     suspend fun deleteAll()
 
